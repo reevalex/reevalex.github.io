@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Name - AI/ML Professional</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #2d3748;
+            --secondary-color: #4a5568;
+            --accent-color: #5a67d8;
+            --light-color: #f7fafc;
+            --dark-color: #1a202c;
+            --text-color: #4a5568;
+            --border-radius: 6px;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--light-color);
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 2rem 0;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .profile {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+        
+        .profile-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid white;
+        }
+        
+        .profile-info h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .profile-info p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        
+        nav {
+            background-color: white;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .nav-list {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-list li a {
+            display: block;
+            padding: 1rem 1.5rem;
+            text-decoration: none;
+            color: var(--primary-color);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-list li a:hover {
+            color: var(--accent-color);
+        }
+        
+        section {
+            padding: 4rem 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--dark-color);
+        }
+        
+        .section-title h2 {
+            font-size: 2rem;
+            display: inline-block;
+            padding-bottom: 0.5rem;
+            border-bottom: 3px solid var(--accent-color);
+        }
+        
+        .about-content {
+            display: flex;
+            gap: 2rem;
+            align-items: flex-start;
+        }
+        
+        .about-text {
+            flex: 2;
+        }
+        
+        .skills {
+            flex: 1;
+            background-color: white;
+            padding: 1.5rem;
+            border-radius: var(--border-radius);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .skills h3 {
+            margin-bottom: 1rem;
+            color: var(--dark-color);
+        }
+        
+        .skill-category {
+            margin-bottom: 1.5rem;
+        }
+        
+        .skill-category h4 {
+            margin-bottom: 0.5rem;
+            color: var(--dark-color);
+        }
+        
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+        
+        .skill-tag {
+            background-color: #e2e8f0;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+        }
+        
+        .projects {
+            background-color: #f8fafc;
+        }
+        
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .project-card {
+            background-color: white;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .project-image {
+            height: 200px;
+            background-color: #e2e8f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .project-content {
+            padding: 1.5rem;
+        }
+        
+        .project-title {
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+            color: var(--dark-color);
+        }
+        
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin: 1rem 0;
+        }
+        
+        .project-tag {
+            background-color: #edf2f7;
+            padding: 0.2rem 0.6rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+        }
+        
+        .project-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .project-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3rem;
+            text-decoration: none;
+            color: var(--accent-color);
+            font-size: 0.9rem;
+        }
+        
+        .publications {
+            background-color: white;
+        }
+        
+        .publication-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+        
+        .publication-item {
+            background-color: #f8fafc;
+            padding: 1.5rem;
+            border-radius: var(--border-radius);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+        
+        .publication-title {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: var(--dark-color);
+        }
+        
+        .publication-venue {
+            font-style: italic;
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+        }
+        
+        .blog-posts {
+            background-color: #f8fafc;
+        }
+        
+        .post-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .post-card {
+            background-color: white;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .post-image {
+            height: 180px;
+            background-color: #e2e8f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .post-content {
+            padding: 1.5rem;
+        }
+        
+        .post-date {
+            font-size: 0.8rem;
+            color: var(--secondary-color);
+            margin-bottom: 0.5rem;
+        }
+        
+        .post-title {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: var(--dark-color);
+        }
+        
+        .post-summary {
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        
+        .read-more {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3rem;
+            text-decoration: none;
+            color: var(--accent-color);
+            font-size: 0.9rem;
+        }
+        
+        .contact {
+            background-color: var(--dark-color);
+            color: white;
+            text-align: center;
+        }
+        
+        .contact-title {
+            color: white;
+        }
+        
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .contact-link {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: white;
+            text-decoration: none;
+            transition: transform 0.3s;
+        }
+        
+        .contact-link:hover {
+            transform: translateY(-5px);
+        }
+        
+        .contact-icon {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        footer {
+            background-color: var(--primary-color);
+            color: white;
+            text-align: center;
+            padding: 1.5rem 0;
+            font-size: 0.9rem;
+        }
+        
+        @media (max-width: 768px) {
+            .header-content, .about-content {
+                flex-direction: column;
+            }
+            
+            .profile {
+                flex-direction: column;
+                text-align: center;
+                gap: 1rem;
+            }
+            
+            .nav-list {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .project-grid, .post-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="profile">
+                    <img src="/api/placeholder/400/400" alt="Profile Picture" class="profile-img">
+                    <div class="profile-info">
+                        <h1>Your Name</h1>
+                        <p>Machine Learning Engineer & Data Scientist</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    
+    <nav>
+        <div class="container">
+            <ul class="nav-list">
+                <li><a href="#about">About</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#publications">Publications</a></li>
+                <li><a href="#blog">Blog</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+    
+    <section id="about">
+        <div class="container">
+            <div class="section-title">
+                <h2>About Me</h2>
+            </div>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>Hello! I'm a passionate Machine Learning Engineer and Data Scientist with expertise in developing AI solutions for real-world problems. My background spans computer science and statistics, with a focus on deep learning, natural language processing, and computer vision.</p>
+                    <br>
+                    <p>Currently, I'm [Your Current Role] at [Your Current Company/Institution], where I work on [brief description of what you do]. Prior to this, I [briefly mention previous relevant experience].</p>
+                    <br>
+                    <p>I hold a [Your Degree] in [Your Field] from [Your University]. My research interests include [list your research interests], and I'm always eager to collaborate on projects that push the boundaries of what AI can achieve.</p>
+                    <br>
+                    <p>When I'm not training models or analyzing data, you can find me [mention a few personal interests or hobbies].</p>
+                </div>
+                <div class="skills">
+                    <h3>Technical Skills</h3>
+                    
+                    <div class="skill-category">
+                        <h4>Programming Languages</h4>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Python</span>
+                            <span class="skill-tag">R</span>
+                            <span class="skill-tag">SQL</span>
+                            <span class="skill-tag">JavaScript</span>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-category">
+                        <h4>ML Frameworks</h4>
+                        <div class="skill-tags">
+                            <span class="skill-tag">PyTorch</span>
+                            <span class="skill-tag">TensorFlow</span>
+                            <span class="skill-tag">Scikit-learn</span>
+                            <span class="skill-tag">Keras</span>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-category">
+                        <h4>Data Processing</h4>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Pandas</span>
+                            <span class="skill-tag">NumPy</span>
+                            <span class="skill-tag">Spark</span>
+                            <span class="skill-tag">Dask</span>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-category">
+                        <h4>Visualization</h4>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Matplotlib</span>
+                            <span class="skill-tag">Seaborn</span>
+                            <span class="skill-tag">Plotly</span>
+                            <span class="skill-tag">D3.js</span>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-category">
+                        <h4>Tools & Platforms</h4>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Git</span>
+                            <span class="skill-tag">Docker</span>
+                            <span class="skill-tag">AWS</span>
+                            <span class="skill-tag">MLflow</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="projects" class="projects">
+        <div class="container">
+            <div class="section-title">
+                <h2>Projects</h2>
+            </div>
+            <div class="project-grid">
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="/api/placeholder/400/200" alt="Project 1">
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Computer Vision for Medical Imaging</h3>
+                        <p>Developed a deep learning model to detect abnormalities in X-ray images with 94% accuracy, potentially reducing diagnosis time for radiologists.</p>
+                        <div class="project-tags">
+                            <span class="project-tag">Computer Vision</span>
+                            <span class="project-tag">PyTorch</span>
+                            <span class="project-tag">CNN</span>
+                            <span class="project-tag">Medical AI</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="project-link"><i class="fab fa-github"></i> GitHub</a>
+                            <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i> Demo</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="/api/placeholder/400/200" alt="Project 2">
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">NLP-Powered Customer Service Bot</h3>
+                        <p>Built an intelligent chatbot using transformer-based models to handle customer inquiries, reducing response time by 60% and improving satisfaction rates.</p>
+                        <div class="project-tags">
+                            <span class="project-tag">NLP</span>
+                            <span class="project-tag">BERT</span>
+                            <span class="project-tag">HuggingFace</span>
+                            <span class="project-tag">Flask</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="project-link"><i class="fab fa-github"></i> GitHub</a>
+                            <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i> Demo</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="/api/placeholder/400/200" alt="Project 3">
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Predictive Analytics for E-commerce</h3>
+                        <p>Implemented a recommendation system that increased conversion rates by 23% through personalized product suggestions based on user behavior patterns.</p>
+                        <div class="project-tags">
+                            <span class="project-tag">Recommender Systems</span>
+                            <span class="project-tag">Collaborative Filtering</span>
+                            <span class="project-tag">PySpark</span>
+                            <span class="project-tag">A/B Testing</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="project-link"><i class="fab fa-github"></i> GitHub</a>
+                            <a href="#" class="project-link"><i class="fas fa-file-alt"></i> Case Study</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="publications" class="publications">
+        <div class="container">
+            <div class="section-title">
+                <h2>Publications</h2>
+            </div>
+            <div class="publication-list">
+                <div class="publication-item">
+                    <h3 class="publication-title">Improved Feature Extraction Methods for Time Series Classification in Limited Data Environments</h3>
+                    <p class="publication-venue">International Conference on Machine Learning (ICML), 2023</p>
+                    <p>This paper presents novel techniques for extracting discriminative features from time series data when training examples are scarce, showing significant improvements over state-of-the-art methods across multiple benchmarks.</p>
+                    <a href="#" class="read-more">Read Paper <i class="fas fa-arrow-right"></i></a>
+                </div>
+                
+                <div class="publication-item">
+                    <h3 class="publication-title">Towards Explainable Deep Learning: A Framework for Interpretable Neural Networks in Healthcare</h3>
+                    <p class="publication-venue">Journal of Artificial Intelligence in Medicine, 2022</p>
+                    <p>We propose a comprehensive framework for making deep learning models more transparent and interpretable when applied to healthcare decisions, addressing a critical need for model explainability in high-stakes domains.</p>
+                    <a href="#" class="read-more">Read Paper <i class="fas fa-arrow-right"></i></a>
+                </div>
+                
+                <div class="publication-item">
+                    <h3 class="publication-title">Efficient Optimization Strategies for Large-Scale Distributed Machine Learning</h3>
+                    <p class="publication-venue">Conference on Neural Information Processing Systems (NeurIPS), 2021</p>
+                    <p>This research introduces novel optimization algorithms that significantly reduce communication overhead in distributed training of large neural networks while maintaining model performance.</p>
+                    <a href="#" class="read-more">Read Paper <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="blog" class="blog-posts">
+        <div class="container">
+            <div class="section-title">
+                <h2>Blog Posts</h2>
+            </div>
+            <div class="post-grid">
+                <div class="post-card">
+                    <div class="post-image">
+                        <img src="/api/placeholder/400/180" alt="Blog Post 1">
+                    </div>
+                    <div class="post-content">
+                        <p class="post-date">January 15, 2023</p>
+                        <h3 class="post-title">A Beginner's Guide to Transfer Learning in Computer Vision</h3>
+                        <p class="post-summary">Learn how to leverage pre-trained models to achieve remarkable results on your computer vision tasks, even with limited training data.</p>
+                        <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                
+                <div class="post-card">
+                    <div class="post-image">
+                        <img src="/api/placeholder/400/180" alt="Blog Post 2">
+                    </div>
+                    <div class="post-content">
+                        <p class="post-date">March 22, 2023</p>
+                        <h3 class="post-title">Demystifying Attention Mechanisms in Transformers</h3>
+                        <p class="post-summary">A deep dive into how attention works in transformer models and why it's been so revolutionary for natural language processing tasks.</p>
+                        <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                
+                <div class="post-card">
+                    <div class="post-image">
+                        <img src="/api/placeholder/400/180" alt="Blog Post 3">
+                    </div>
+                    <div class="post-content">
+                        <p class="post-date">June 8, 2023</p>
+                        <h3 class="post-title">Ethical Considerations in Machine Learning: A Practitioner's Guide</h3>
+                        <p class="post-summary">Exploring practical approaches to identifying and mitigating bias, ensuring fairness, and maintaining transparency in ML systems.</p>
+                        <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2 class="contact-title">Get In Touch</h2>
+            </div>
+            <p>I'm always open to discussing new projects, research opportunities, or potential collaborations.</p>
+            <div class="contact-links">
+                <a href="mailto:your.email@example.com" class="contact-link">
+                    <i class="fas fa-envelope contact-icon"></i>
+                    <span>Email</span>
+                </a>
+                <a href="https://linkedin.com/in/yourprofile" target="_blank" class="contact-link">
+                    <i class="fab fa-linkedin contact-icon"></i>
+                    <span>LinkedIn</span>
+                </a>
+                <a href="https://github.com/yourusername" target="_blank" class="contact-link">
+                    <i class="fab fa-github contact-icon"></i>
+                    <span>GitHub</span>
+                </a>
+                <a href="https://twitter.com/yourusername" target="_blank" class="contact-link">
+                    <i class="fab fa-twitter contact-icon"></i>
+                    <span>Twitter</span>
+                </a>
+            </div>
+        </div>
+    </section>
+    
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Your Name. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                window.scrollTo({
+                    top: targetElement.offsetTop - 60,
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
