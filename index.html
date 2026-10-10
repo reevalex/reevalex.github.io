@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Alexander Reevcrona</title>
+<meta name="description" content="Alexander Reevcrona went from a warehouse floor to building data and AI for hockey clubs.">
+<script>try{if(localStorage.getItem('theme')==='dark')document.documentElement.classList.add('dark')}catch(e){}</script>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header><nav id="crumb" class="crumb" aria-label="Breadcrumb"></nav></header>
+<main id="app">
+  <section id="home" class="view">
+    <div id="hero" class="hero"><img id="heroImg" alt=""></div>
+    <!-- Landing copy (intro + "looking for" line) lives in the INTRO / LOOKING_FOR consts at the top of main.js -->
+    <div id="body" class="body"></div>
+  </section>
+  <section id="flowView" class="view" hidden>
+    <div id="flow" class="flow" tabindex="0" aria-label="Chapters"></div>
+    <div id="dots" class="dots" aria-hidden="true"></div>
+    <div id="tl" class="tl" hidden aria-label="Timeline overview"></div>
+  </section>
+</main>
+<footer>
+  <div class="left"><button class="pill" id="upBtn" title="Up one level (Esc)" hidden>↑ Up</button></div>
+  <div class="mid"><button class="pill" id="tlBtn" aria-pressed="false" hidden>Timeline</button></div>
+  <div class="right"><button class="pill" id="themeBtn">Dark</button></div>
+</footer>
+<script src="main.js"></script>
+</body>
+</html>
