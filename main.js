@@ -1,5 +1,5 @@
 // <!-- EDIT ME: landing intro + what I'm looking for (please confirm wording) -->
-const INTRO='AI & ML Engineer · MSc in Computer Science at Linköping University.';
+const INTRO='AI & ML Engineer · MSc in Computer Science at Linköping\u00a0University.';
 const LOOKING_FOR='Looking for a master’s thesis and roles in AI/ML for 2027.';
 const C={
  nowaste:{t:'Nowaste Logistics',y:'2016–2021 · Helsingborg',d:'2016',s:'Warehouse',p:'Five years on a warehouse floor taught me how things actually move. Somewhere between the pallets, I started wondering how to make it smarter.'},
@@ -79,9 +79,9 @@ function render(){const s=state();setCrumb(s);
  flowV.hidden=true;home.hidden=false;flowB=null;setTL(false);seg.hidden=true;
  hero.hidden=false;hero.classList.add('bust');setImgEl(heroImg,'me');heroImg.alt='Alexander Reevcrona';
  $('#body').innerHTML=`<h1>Hi, I’m Alexander.</h1><p class="story">${INTRO}</p><p class="story seek">${LOOKING_FOR}</p>
- <div class="cards"><button class="card" data-go="#b/story"><span class="cim"><img alt="" data-img-id="rogle"></span><span class="ctx"><span class="ct">My story</span><span class="cs">From warehouse to AI, chapter by chapter</span></span></button><button class="card" data-go="#b/projects"><span class="cim"><img alt="" data-img-id="projects"></span><span class="ctx"><span class="ct">Projects</span><span class="cs">Things I’ve built on the side</span></span></button></div>
+ <div class="cards"><button class="card" data-go="#b/story"><span class="cim"><img alt="" data-img-id="card-story" data-fb="rogle"></span><span class="ct">My story</span></button><button class="card" data-go="#b/projects"><span class="cim"><img alt="" data-img-id="card-projects" data-fb="projects"></span><span class="ct">Projects</span></button></div>
  <div class="foot land">${contactRow('icons')}</div>
-`;syncImages();document.title='Alexander Reevcrona'}
+`;document.querySelectorAll('img[data-fb]').forEach(el=>el.onerror=()=>{el.onerror=null;setImgEl(el,el.dataset.fb)});syncImages();document.title='Alexander Reevcrona'}
 function route(){if(document.startViewTransition&&!RM())document.startViewTransition(render);else render()}
 addEventListener('popstate',route);
 const SUN='<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>',MOON='<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z"/></svg>';
