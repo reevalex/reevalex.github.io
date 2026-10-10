@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Alexander Reevcrona</title>
 <meta name="description" content="Alexander Reevcrona went from a warehouse floor to building data and AI for hockey clubs.">
-<script>try{if(localStorage.getItem('theme')==='dark')document.documentElement.classList.add('dark')}catch(e){}</script>
+<script>try{if(localStorage.getItem('theme')==='dark')document.documentElement.classList.add('dark')}catch(e){}try{var l=localStorage.getItem('lang');if(l!=='sv'&&l!=='en')l=(navigator.language||'').toLowerCase().indexOf('sv')===0?'sv':'en';document.documentElement.lang=l}catch(e){}</script>
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -15,13 +15,14 @@
       <button id="segScroll" aria-pressed="true" aria-label="Scroll view" title="Scroll view"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><rect x="5" y="3" width="14" height="8" rx="2"/><rect x="5" y="14" width="14" height="7" rx="2"/></svg></button>
       <button id="segTl" aria-pressed="false" aria-label="Timeline overview" title="Timeline overview"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><rect x="3" y="4" width="7" height="7" rx="1.5"/><rect x="14" y="4" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg></button>
     </div>
+    <button id="langBtn" class="icon-btn lang-btn" aria-label="Byt till svenska">SV</button>
     <button id="themeBtn" class="icon-btn" aria-label="Switch to dark theme"></button>
   </div>
 </header>
 <main id="app">
   <section id="home" class="view">
     <div id="hero" class="hero"><img id="heroImg" alt=""></div>
-    <!-- Landing copy (intro + "looking for" line) lives in the INTRO / LOOKING_FOR consts at the top of main.js -->
+    <!-- All copy (EN/SV) lives in the STRINGS dictionary at the top of main.js -->
     <div id="body" class="body"></div>
   </section>
   <section id="flowView" class="view" hidden>

@@ -1,22 +1,60 @@
-// <!-- EDIT ME: landing intro + what I'm looking for (please confirm wording) -->
-const INTRO='AI & ML Engineer · MSc in Computer Science at Linköping\u00a0University.';
-const LOOKING_FOR='Looking for a master’s thesis and roles in AI/ML for 2027.';
-const C={
- nowaste:{t:'Nowaste Logistics',y:'2016–2021 · Helsingborg',d:'2016',s:'Warehouse',p:'Five years on a warehouse floor taught me how things actually move. Somewhere between the pallets, I started wondering how to make it smarter.'},
- halmstad:{t:'Halmstad University',y:'2022–2025 · BSc Data Science',d:'2022',s:'BSc Data Science',p:'I went back to school to learn how. My thesis asked whether a model could catch rare diseases that are easy to miss.'},
- farjestad:{t:'Färjestad BK',y:'2025–2026 · Data science intern',d:'2025',s:'Data science intern',p:'My first taste of hockey data. I trained an expected-goals model on 1.5 million shots, and it beat the data provider’s own.'},
- liu:{t:'Linköping University',y:'2025–2027 · MSc AI & ML',d:'2025',s:'MSc AI & ML',p:'Wanting to go deeper, I moved to Linköping for a master’s in AI and machine learning.'},
- idainfront:{t:'Ida Infront',y:'Summer 2026 · AI engineering intern',d:'Summer 2026',s:'AI engineering intern',p:'A summer spent teaching AI agents to read business documents and hand back configurations you can actually trust.'},
- rogle:{t:'Rögle BK',y:'2026–now · Software engineer',d:'2026',s:'Software engineer',p:'Back in hockey, this time building Rögle’s data platform from the ground up. This is where the story is now.'}
+// All user-facing copy lives here. EN + SV.
+const STRINGS={
+ en:{
+  greet:'Hi, I’m Alexander.',
+  intro:'AI & ML Engineer · MSc in Computer Science at Linköping\u00a0University.',
+  looking:'Looking for a master’s thesis and roles in AI/ML for 2027.',
+  cardStory:'My story',cardProjects:'Projects',
+  bStory:'Story',bProjects:'Projects',contact:'Contact',
+  endStory:'That’s where I am today.',endProjects:'',
+  seek:'Want to talk? I’m reachable below.',backStart:'Back to start ↑',
+  email:'Email',linkedin:'LinkedIn',github:'GitHub',cv:'CV',
+  back:'Back (Esc)',breadcrumb:'Breadcrumb',storyView:'Story view',scrollView:'Scroll view',timeline:'Timeline overview',chapters:'Chapters',
+  toDark:'Switch to dark theme',toLight:'Switch to light theme',darkT:'Dark theme',lightT:'Light theme',
+  langBtn:'SV',langLabel:'Byt till svenska',
+  desc:'Alexander Reevcrona went from a warehouse floor to building data and AI for hockey clubs.',
+  c:{
+   nowaste:{t:'Nowaste Logistics',y:'2016–2021 · Helsingborg',d:'2016',s:'Warehouse',p:'Five years on a warehouse floor taught me how things actually move. Somewhere between the pallets, I started wondering how to make it smarter.'},
+   halmstad:{t:'Halmstad University',y:'2022–2025 · BSc Data Science',d:'2022',s:'BSc Data Science',p:'I went back to school to learn how. My thesis asked whether a model could catch rare diseases that are easy to miss.'},
+   farjestad:{t:'Färjestad BK',y:'2025–2026 · Data science intern',d:'2025',s:'Data science intern',p:'My first taste of hockey data. I trained an expected-goals model on 1.5 million shots, and it beat the data provider’s own.'},
+   liu:{t:'Linköping University',y:'2025–2027 · MSc AI & ML',d:'2025',s:'MSc AI & ML',p:'Wanting to go deeper, I moved to Linköping for a master’s in AI and machine learning.'},
+   idainfront:{t:'Ida Infront',y:'Summer 2026 · AI engineering intern',d:'Summer 2026',s:'AI engineering intern',p:'A summer spent teaching AI agents to read business documents and hand back configurations you can actually trust.'},
+   rogle:{t:'Rögle BK',y:'2026–now · Software engineer',d:'2026',s:'Software engineer',p:'Back in hockey, this time building Rögle’s data platform from the ground up. This is where the story is now.'},
+   clip:{t:'CLIP for satellite images',y:'Course project · LiU',d:'Project',p:'I fine-tuned CLIP to recognise what satellite images show. It placed first on the course leaderboard for zero-shot classification.'},
+   cbt:{t:'CBT chatbot with RAG',y:'Course project · LiU',d:'Project',p:'A chatbot for cognitive behavioural therapy that retrieves from trusted material. I evaluated it with an LLM judge and checked that against human ratings.'}
+  }},
+ sv:{
+  greet:'Hej, jag heter Alexander.',
+  intro:'AI- & ML-ingenjör · Masterstudent i datavetenskap vid Linköpings\u00a0universitet.',
+  looking:'Söker exjobb och roller inom AI/ML till 2027.',
+  cardStory:'Min historia',cardProjects:'Projekt',
+  bStory:'Historia',bProjects:'Projekt',contact:'Kontakt',
+  endStory:'Det är där jag är i dag.',endProjects:'',
+  seek:'Vill du prata? Du når mig här nedanför.',backStart:'Tillbaka till början ↑',
+  email:'E-post',linkedin:'LinkedIn',github:'GitHub',cv:'CV',
+  back:'Tillbaka (Esc)',breadcrumb:'Brödsmulor',storyView:'Visningsläge',scrollView:'Scrollvy',timeline:'Tidslinje',chapters:'Kapitel',
+  toDark:'Byt till mörkt tema',toLight:'Byt till ljust tema',darkT:'Mörkt tema',lightT:'Ljust tema',
+  langBtn:'EN',langLabel:'Switch to English',
+  desc:'Alexander Reevcrona gick från ett lagergolv till att bygga data och AI för hockeyklubbar.',
+  c:{
+   nowaste:{t:'Nowaste Logistics',y:'2016–2021 · Helsingborg',d:'2016',s:'Lager',p:'Fem år på ett lagergolv lärde mig hur saker faktiskt rör sig. Någonstans mellan pallarna började jag fundera på hur det kunde göras smartare.'},
+   halmstad:{t:'Högskolan i Halmstad',y:'2022–2025 · Kandidat i data science',d:'2022',s:'Kandidat i data science',p:'Jag gick tillbaka till skolan för att lära mig hur. Mitt examensarbete undersökte om en modell kunde upptäcka sällsynta sjukdomar som är lätta att missa.'},
+   farjestad:{t:'Färjestad BK',y:'2025–2026 · Praktikant inom data science',d:'2025',s:'Praktikant, data science',p:'Mitt första möte med hockeydata. Jag tränade en expected goals-modell på 1,5 miljoner skott, och den slog dataleverantörens egen.'},
+   liu:{t:'Linköpings universitet',y:'2025–2027 · Master i AI & ML',d:'2025',s:'Master i AI & ML',p:'Jag ville gå djupare, så jag flyttade till Linköping för en master i AI och maskininlärning.'},
+   idainfront:{t:'Ida Infront',y:'Sommaren 2026 · Praktikant inom AI-utveckling',d:'Sommaren 2026',s:'Praktikant, AI-utveckling',p:'En sommar där jag lärde AI-agenter att läsa affärsdokument och lämna tillbaka konfigurationer man faktiskt kan lita på.'},
+   rogle:{t:'Rögle BK',y:'2026–nu · Mjukvaruutvecklare',d:'2026',s:'Mjukvaruutvecklare',p:'Tillbaka i hockeyn, den här gången för att bygga Rögles dataplattform från grunden. Det är här historien är nu.'},
+   clip:{t:'CLIP för satellitbilder',y:'Kursprojekt · LiU',d:'Projekt',p:'Jag finjusterade CLIP för att känna igen vad satellitbilder visar. Det hamnade först på kursens topplista för zero-shot-klassificering.'},
+   cbt:{t:'KBT-chattbot med RAG',y:'Kursprojekt · LiU',d:'Projekt',p:'En chattbot för kognitiv beteendeterapi som hämtar från pålitligt material. Jag utvärderade den med en LLM-domare och jämförde det mot mänskliga bedömningar.'}
+  }}
 };
-// PLACEHOLDER project images: assets/project-clip.png and assets/project-cbt.png are copies of projects.png. Swap the files to replace.
-Object.assign(C,{
- clip:{t:'CLIP for satellite images',y:'Course project · LiU',d:'Project',p:'I fine-tuned CLIP to recognise what satellite images show. It placed first on the course leaderboard for zero-shot classification.',img:'project-clip'},
- cbt:{t:'CBT chatbot with RAG',y:'Course project · LiU',d:'Project',p:'A chatbot for cognitive behavioural therapy that retrieves from trusted material. I evaluated it with an LLM judge and checked that against human ratings.',img:'project-cbt'}
-});
+let LANG=document.documentElement.lang==='sv'?'sv':'en';
+const T=()=>STRINGS[LANG];
+// PLACEHOLDER project images: assets/project-clip.png and assets/project-cbt.png are copies of projects.png.
+const IMG={clip:'project-clip',cbt:'project-cbt'};
+const C=new Proxy({},{get:(_,id)=>T().c[id]&&Object.assign({img:IMG[id]},T().c[id]),ownKeys:()=>Object.keys(STRINGS.en.c),getOwnPropertyDescriptor:()=>({enumerable:true,configurable:true})});
 const B={
- story:{t:'Story',ids:['nowaste','halmstad','farjestad','liu','idainfront','rogle']},
- projects:{t:'Projects',ids:['clip','cbt']}
+ story:{get t(){return T().bStory},ids:['nowaste','halmstad','farjestad','liu','idainfront','rogle']},
+ projects:{get t(){return T().bProjects},ids:['clip','cbt']}
 };
 const NIGHT=new Set(['nowaste','halmstad','farjestad','liu','idainfront','rogle','me']);
 const $=s=>document.querySelector(s);
@@ -32,16 +70,18 @@ const I={
  gh:'<path d="M9 19c-4 1.5-4-2-6-2.5m12 4.5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 0 0-1.3-3.2 4.2 4.2 0 0 0-.1-3.2s-1-.3-3.4 1.3a11.6 11.6 0 0 0-6 0C6.8 2.8 5.8 3.1 5.8 3.1a4.2 4.2 0 0 0-.1 3.2A4.6 4.6 0 0 0 4.4 9.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21"/>',
  cv:'<path d="M12 4v11m-5-5 5 5 5-5M5 20h14"/>'};
 const svg=(k,s=20)=>`<svg viewBox="0 0 24 24" width="${s}" height="${s}" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${I[k]}</svg>`;
-const LINKS=[['mail','Email','mailto:alexreev.ai@gmail.com',''],['in','LinkedIn','https://linkedin.com/in/alexander-reevcrona','target="_blank" rel="noopener"'],['gh','GitHub','https://github.com/reevalex','target="_blank" rel="noopener"'],['cv','CV','Alexander_Reevcrona_CV.pdf','download']];
-const contactRow=(cls)=>`<div class="${cls}">${LINKS.map(([k,l,h,a])=>`<a href="${h}" ${a} aria-label="${l}">${svg(k,cls==='mini'?16:20)}<span>${l}</span></a>`).join('')}</div>`;
+const LINKS=[['mail','email','mailto:alexreev.ai@gmail.com',''],['in','linkedin','https://linkedin.com/in/alexander-reevcrona','target="_blank" rel="noopener"'],
+ // GitHub link: re-enable later -> ['gh','github','https://github.com/reevalex','target="_blank" rel="noopener"'],
+ ['cv','cv','Alexander_Reevcrona_CV.pdf','download']];
+const contactRow=(cls)=>`<div class="${cls}">${LINKS.map(([k,l,h,a])=>`<a href="${h}" ${a} aria-label="${T()[l]}">${svg(k,cls==='mini'?16:20)}<span>${T()[l]}</span></a>`).join('')}</div>`;
 
 
 const flowV=$('#flowView'),flow=$('#flow'),dots=$('#dots');
 const RM=()=>matchMedia('(prefers-reduced-motion: reduce)').matches;
 let secs=[],cur=0,flowB=null,lock=false;
-function buildFlow(b){if(flowB===b)return;flowB=b;const ids=B[b].ids;
+function buildFlow(b,force){if(flowB===b&&!force)return;flowB=b;const ids=B[b].ids;
  flow.innerHTML=ids.map((id,i)=>{const c=C[id];return`<section class="ch" data-i="${i}"><div class="im"><img alt="${c.t}" data-img-id="${c.img||id}"></div><div class="tx"><div class="d">${c.d}</div><h2>${c.t}</h2><div class="sub">${c.y}</div><p class="story">${c.p}</p></div></section>`}).join('')+
- `<section class="ch end" data-i="${ids.length}"><div class="tx"><p class="story close">${b==='story'?'That’s where I am today.':'More on GitHub.'}</p><p class="story seek">Want to talk? I’m reachable below.</p><div class="foot">${contactRow('icons')}<button class="all" data-go="#/">Back to start ↑</button></div></div></section>`;
+ `<section class="ch end" data-i="${ids.length}"><div class="tx"><p class="story close">${b==='story'?T().endStory:T().endProjects /* was 'More on GitHub.' - re-enable later */}</p><p class="story seek">${T().seek}</p><div class="foot">${contactRow('icons')}<button class="all" data-go="#/">${T().backStart}</button></div></div></section>`;
  secs=[...flow.children];dots.innerHTML=secs.map((_,k)=>`<i data-k="${k}"></i>`).join('');syncImages();
  const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)setCur(+e.target.dataset.i)}),{root:flow,threshold:.6});secs.forEach(s=>io.observe(s))}
 function setCur(i){cur=i;secs.forEach((s,k)=>s.classList.toggle('on',k===i));[...dots.children].forEach((d,k)=>d.classList.toggle('on',k===i));
@@ -70,7 +110,7 @@ function setTL(on){flowV.classList.toggle('tlon',on);tlEl.hidden=!on;segT.setAtt
 segT.onclick=()=>setTL(true);segS.onclick=()=>{if(!tlEl.hidden){setTL(false);requestAnimationFrame(()=>scrollTo_(cur,true))}};
 function go(h){if(location.hash===h){render();return}history.pushState(null,'',h);route()}
 function setCrumb(s){if(s.v==='land'){crumb.innerHTML='';upBtn.hidden=true;return}upBtn.hidden=false;const ids=B[s.b].ids;
- const last=s.i>=ids.length?'Contact':C[ids[s.i]].t;
+ const last=s.i>=ids.length?T().contact:C[ids[s.i]].t;
  crumb.innerHTML=`<a href="#/" data-go="#/">Alexander</a><span class="sep">/</span><a href="#b/${s.b}" data-go="${hashOf(s.b,0)}">${B[s.b].t}</a><span class="sep">/</span><span class="here">${last}</span>`;
  document.title=`${last} · Alexander Reevcrona`}
 function render(){const s=state();setCrumb(s);
@@ -78,15 +118,23 @@ function render(){const s=state();setCrumb(s);
   requestAnimationFrame(()=>{scrollTo_(s.i,true);setCur(s.i)});flow.focus({preventScroll:true});return}
  flowV.hidden=true;home.hidden=false;flowB=null;setTL(false);seg.hidden=true;
  hero.hidden=false;hero.classList.add('bust');setImgEl(heroImg,'me');heroImg.alt='Alexander Reevcrona';
- $('#body').innerHTML=`<h1>Hi, I’m Alexander.</h1><p class="story">${INTRO}</p><p class="story seek">${LOOKING_FOR}</p>
- <div class="cards"><button class="card" data-go="#b/story"><span class="cim"><img alt="" data-img-id="card-story" data-fb="rogle"></span><span class="ct">My story</span></button><button class="card" data-go="#b/projects"><span class="cim"><img alt="" data-img-id="card-projects" data-fb="projects"></span><span class="ct">Projects</span></button></div>
+ $('#body').innerHTML=`<h1>${T().greet}</h1><p class="story">${T().intro}</p><p class="story seek">${T().looking}</p>
+ <div class="cards"><button class="card" data-go="#b/story"><span class="cim"><img alt="" data-img-id="card-story" data-fb="rogle"></span><span class="ct">${T().cardStory}</span></button><button class="card" data-go="#b/projects"><span class="cim"><img alt="" data-img-id="card-projects" data-fb="projects"></span><span class="ct">${T().cardProjects}</span></button></div>
  <div class="foot land">${contactRow('icons')}</div>
 `;document.querySelectorAll('img[data-fb]').forEach(el=>el.onerror=()=>{el.onerror=null;setImgEl(el,el.dataset.fb)});syncImages();document.title='Alexander Reevcrona'}
 function route(){if(document.startViewTransition&&!RM())document.startViewTransition(render);else render()}
 addEventListener('popstate',route);
 const SUN='<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>',MOON='<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z"/></svg>';
-function themeIcon(){const d=isDark();themeBtn.innerHTML=d?SUN:MOON;themeBtn.setAttribute('aria-label',d?'Switch to light theme':'Switch to dark theme');themeBtn.title=d?'Light theme':'Dark theme'}
+function themeIcon(){const d=isDark();themeBtn.innerHTML=d?SUN:MOON;themeBtn.setAttribute('aria-label',d?T().toLight:T().toDark);themeBtn.title=d?T().lightT:T().darkT}
 function setTheme(d){document.documentElement.classList.toggle('dark',d);themeIcon();try{localStorage.setItem('theme',d?'dark':'light')}catch(e){}syncImages()}
 themeBtn.onclick=()=>{const d=!isDark();document.startViewTransition?document.startViewTransition(()=>setTheme(d)):setTheme(d)};
-themeIcon();
+const langBtn=$('#langBtn');
+function applyStatic(){const t=T();document.documentElement.lang=LANG;langBtn.textContent=t.langBtn;langBtn.setAttribute('aria-label',t.langLabel);langBtn.title=t.langLabel;langBtn.setAttribute('lang',LANG==='sv'?'en':'sv');
+ upBtn.setAttribute('aria-label',t.back);upBtn.title=t.back;crumb.setAttribute('aria-label',t.breadcrumb);seg.setAttribute('aria-label',t.storyView);
+ segS.setAttribute('aria-label',t.scrollView);segS.title=t.scrollView;segT.setAttribute('aria-label',t.timeline);segT.title=t.timeline;
+ flow.setAttribute('aria-label',t.chapters);tlEl.setAttribute('aria-label',t.timeline);document.querySelector('meta[name=description]').content=t.desc;themeIcon()}
+function setLang(l){LANG=l;try{localStorage.setItem('lang',l)}catch(e){}applyStatic();const s=state();
+ if(s.v==='flow'){const keep=cur,tlOn=!tlEl.hidden,top=flow.scrollTop;buildFlow(s.b,true);flow.scrollTop=top;setCur(keep);if(tlOn)setTL(true)}else render()}
+langBtn.onclick=()=>setLang(LANG==='sv'?'en':'sv');
+applyStatic();
 render();

@@ -169,3 +169,9 @@ main{inset:48px 0 16px 0}
 .cim{width:40px;height:34px}.cim img{max-width:40px;max-height:34px}
 .card span,.card .ct{font-size:15px}
 @media (max-width:600px){.cards{grid-template-columns:repeat(2,auto);width:auto}.cim{width:36px;height:30px}.cim img{max-width:36px;max-height:30px}}
+
+/* v9 language toggle */
+.lang-btn{font-size:12px;font-weight:500;letter-spacing:.06em;font-family:inherit}
+.ch h2,.ch .sub,.ct,.tc .tt,.tc .ts{overflow-wrap:anywhere;hyphens:auto}
+.close:empty{display:none}
+@media (max-width:600px){.crumb{max-width:calc(100vw - 150px)}header:has(.seg:not([hidden])) .crumb{max-width:calc(100vw - 222px);text-overflow:ellipsis}.crumb .here{overflow:hidden;text-overflow:ellipsis}}
