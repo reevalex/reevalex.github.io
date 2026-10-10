@@ -49,7 +49,7 @@ const STRINGS={
 };
 let LANG=document.documentElement.lang==='sv'?'sv':'en';
 const T=()=>STRINGS[LANG];
-// PLACEHOLDER project images: assets/project-clip.png and assets/project-cbt.png are copies of projects.png.
+// PLACEHOLDER project images: assets/project-clip.webp and assets/project-cbt.webp are copies of projects.webp.
 const IMG={clip:'project-clip',cbt:'project-cbt'};
 const C=new Proxy({},{get:(_,id)=>T().c[id]&&Object.assign({img:IMG[id]},T().c[id]),ownKeys:()=>Object.keys(STRINGS.en.c),getOwnPropertyDescriptor:()=>({enumerable:true,configurable:true})});
 const B={
@@ -60,9 +60,9 @@ const NIGHT=new Set(['nowaste','halmstad','farjestad','liu','idainfront','rogle'
 const $=s=>document.querySelector(s);
 const home=$('#home'),tl=$('#timeline'),strip=$('#strip'),scrub=$('#scrub'),heroImg=$('#heroImg'),hero=$('#hero'),themeBtn=$('#themeBtn'),crumb=$('#crumb'),upBtn=$('#upBtn');
 const isDark=()=>document.documentElement.classList.contains('dark');
-function setImgEl(el,id){const n=isDark()&&NIGHT.has(id);const src=`assets/${id}${n?'-night':''}.png`;if(el.getAttribute('src')!==src)el.src=src;el.classList.toggle('night',n);el.dataset.imgId=id}
+function setImgEl(el,id){const n=isDark()&&NIGHT.has(id);const src=`assets/${id}${n?'-night':''}.webp`;if(el.getAttribute('src')!==src)el.src=src;el.classList.toggle('night',n);el.dataset.imgId=id}
 function syncImages(){document.querySelectorAll('img[data-img-id]').forEach(el=>setImgEl(el,el.dataset.imgId))}
-Object.keys(C).map(id=>C[id].img||id).concat('me','door').forEach(id=>{new Image().src=`assets/${id}.png`;if(NIGHT.has(id))new Image().src=`assets/${id}-night.png`});
+Object.keys(C).map(id=>C[id].img||id).concat('me','door').forEach(id=>{new Image().src=`assets/${id}.webp`;if(NIGHT.has(id))new Image().src=`assets/${id}-night.webp`});
 
 const I={
  mail:'<path d="M3 6h18v12H3z"/><path d="m3 7 9 6 9-6"/>',
