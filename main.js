@@ -6,7 +6,7 @@ const STRINGS={
   looking:'Looking for a master’s thesis and roles in AI/ML for 2027.',
   cardStory:'My story',cardProjects:'Projects',
   bStory:'Story',bProjects:'Projects',contact:'Contact',
-  endStory:'That’s where I am today.',endProjects:'',
+  endStory:'That’s where I am today.',more:'More',seeProj:'See projects →',prevP:'Previous',nextP:'More about this chapter',endProjects:'',
   seek:'Want to talk? I’m reachable below.',backStart:'Back to start ↑',
   email:'Email',linkedin:'LinkedIn',github:'GitHub',cv:'CV',
   back:'Back (Esc)',breadcrumb:'Breadcrumb',storyView:'Story view',scrollView:'Scroll view',timeline:'Timeline overview',chapters:'Chapters',
@@ -14,12 +14,12 @@ const STRINGS={
   langBtn:'SV',langLabel:'Byt till svenska',
   desc:'Alexander Reevcrona went from a warehouse floor to building data and AI for hockey clubs.',
   c:{
-   nowaste:{t:'Nowaste Logistics',y:'2016–2021 · Helsingborg',d:'2016',s:'Warehouse',p:'Five years on a warehouse floor taught me how things actually move. Somewhere between the pallets, I started wondering how to make it smarter.'},
-   halmstad:{t:'Halmstad University',y:'2022–2025 · BSc Data Science',d:'2022',s:'BSc Data Science',p:'I went back to school to learn how. My thesis asked whether a model could catch rare diseases that are easy to miss.'},
-   farjestad:{t:'Färjestad BK',y:'2025–2026 · Data science intern',d:'2025',s:'Data science intern',p:'My first taste of hockey data. I trained an expected-goals model on 1.5 million shots, and it beat the data provider’s own.'},
-   liu:{t:'Linköping University',y:'2025–2027 · MSc AI & ML',d:'2025',s:'MSc AI & ML',p:'Wanting to go deeper, I moved to Linköping for a master’s in AI and machine learning.'},
-   idainfront:{t:'Ida Infront',y:'Summer 2026 · AI engineering intern',d:'Summer 2026',s:'AI engineering intern',p:'A summer spent teaching AI agents to read business documents and hand back configurations you can actually trust.'},
-   rogle:{t:'Rögle BK',y:'2026–now · Software engineer',d:'2026',s:'Software engineer',p:'Back in hockey, this time building Rögle’s data platform from the ground up. This is where the story is now.'},
+   nowaste:{t:'Nowaste Logistics',y:'2016–2021 · Helsingborg',d:'2016',s:'Warehouse',p:'Five years on a warehouse floor taught me how things actually move. Somewhere between the pallets, I started wondering how to make it smarter.',x:[{l:'What I did',p:'I started out picking orders. Later I shared responsibility for goods receiving at Trademax’s warehouse, making sure what came in was right before it went anywhere else.'},{l:'What it taught me',p:'Operations run on flow and reliability. When one step stalls, everything behind it waits. Seeing that up close is why I wanted to build the systems, not just work inside them.'}]},
+   halmstad:{t:'Halmstad University',y:'2022–2025 · BSc Data Science',d:'2022',s:'BSc Data Science',p:'I went back to school to learn how. My thesis asked whether a model could catch rare diseases that are easy to miss.',x:[{l:'The thesis',p:'I predicted rare diseases from patient records in MIMIC-III. Switching to a specialised loss, Asymmetric Loss, raised F1 on the rare diagnoses from 0.136 to 0.220.',k:['MIMIC-III','Asymmetric Loss','Multi-label']},{l:'Along the way',p:'Along the way I received scholarships from Getinge Sterilization and Sparbanksstiftelsen Kronan, which meant a lot when I had left a steady job to study.'}]},
+   farjestad:{t:'Färjestad BK',y:'2025–2026 · Data science intern',d:'2025',s:'Data science intern',p:'My first taste of hockey data. I trained an expected-goals model on 1.5 million shots, and it beat the data provider’s own.',x:[{l:'The model',p:'I built an expected goals model on 1.5 million shots, with features for shot location, shot type, game state and the play leading up to it. It beat the provider’s model.',k:['xG','1.5M shots','Python']},{l:'Doing it right',p:'I tested feature groups one at a time to see what really helped, and removed flags that quietly leaked the outcome. A model that cheats only looks good.'},{l:'Off the ice',p:'Off the ice, I set up an hourly Azure pipeline that fed ticket sales into Power BI.',k:['Azure','Power BI']}]},
+   liu:{t:'Linköping University',y:'2025–2027 · MSc AI & ML',d:'2025',s:'MSc AI & ML',p:'Wanting to go deeper, I moved to Linköping for a master’s in AI and machine learning.',x:[{l:'Focus',p:'My courses centre on deep learning, NLP, AI robotics, big data and distributed systems.',k:['Deep learning','NLP','Robotics','Distributed systems']},{l:'Side quests',p:'Along the way I fine-tuned CLIP for satellite images and built a CBT chatbot grounded in trusted material.',go:1}]},
+   idainfront:{t:'Ida Infront',y:'Summer 2026 · AI engineering intern',d:'Summer 2026',s:'AI engineering intern',p:'A summer spent teaching AI agents to read business documents and hand back configurations you can actually trust.',x:[{l:'The system',p:'In a team of two, I built a multi-agent system in LangGraph, integrated into the product. Users upload business documents, chat, and get a verified configuration package back.',k:['LangGraph','Multi-agent','LLMs']},{l:'The trick',p:'The agents never write XML. They write a validated spec, and rule-based templates turn it into XML. The LLM does the thinking; the templates guarantee the format.'}]},
+   rogle:{t:'Rögle BK',y:'2026–now · Software engineer',d:'2026',s:'Software engineer',p:'Back in hockey, this time building Rögle’s data platform from the ground up. This is where the story is now.',x:[{l:'The platform',p:'I’m building it in Python with FastAPI, Postgres and DuckDB. It holds tracking data from SHL and HockeyAllsvenskan games, along with player careers.',k:['Python','FastAPI','Postgres','DuckDB']},{l:'Built to last',p:'A nightly pipeline stores every raw API response and rebuilds the database from that archive. Players are linked across two data providers, so one person is one record.'}]},
    clip:{t:'CLIP for satellite images',y:'Course project · LiU',d:'Project',p:'I fine-tuned CLIP to recognise what satellite images show. It placed first on the course leaderboard for zero-shot classification.'},
    cbt:{t:'CBT chatbot with RAG',y:'Course project · LiU',d:'Project',p:'A chatbot for cognitive behavioural therapy that retrieves from trusted material. I evaluated it with an LLM judge and checked that against human ratings.'}
   }},
@@ -29,7 +29,7 @@ const STRINGS={
   looking:'Söker exjobb och roller inom AI/ML till 2027.',
   cardStory:'Min historia',cardProjects:'Projekt',
   bStory:'Historia',bProjects:'Projekt',contact:'Kontakt',
-  endStory:'Det är där jag är i dag.',endProjects:'',
+  endStory:'Det är där jag är i dag.',more:'Mer',seeProj:'Se projekt →',prevP:'Föregående',nextP:'Mer om det här kapitlet',endProjects:'',
   seek:'Vill du prata? Du når mig här nedanför.',backStart:'Tillbaka till början ↑',
   email:'E-post',linkedin:'LinkedIn',github:'GitHub',cv:'CV',
   back:'Tillbaka (Esc)',breadcrumb:'Brödsmulor',storyView:'Visningsläge',scrollView:'Scrollvy',timeline:'Tidslinje',chapters:'Kapitel',
@@ -37,12 +37,12 @@ const STRINGS={
   langBtn:'EN',langLabel:'Switch to English',
   desc:'Alexander Reevcrona gick från ett lagergolv till att bygga data och AI för hockeyklubbar.',
   c:{
-   nowaste:{t:'Nowaste Logistics',y:'2016–2021 · Helsingborg',d:'2016',s:'Lager',p:'Fem år på ett lagergolv lärde mig hur saker faktiskt rör sig. Någonstans mellan pallarna började jag fundera på hur det kunde göras smartare.'},
-   halmstad:{t:'Högskolan i Halmstad',y:'2022–2025 · Kandidat i data science',d:'2022',s:'Kandidat i data science',p:'Jag gick tillbaka till skolan för att lära mig hur. Mitt examensarbete undersökte om en modell kunde upptäcka sällsynta sjukdomar som är lätta att missa.'},
-   farjestad:{t:'Färjestad BK',y:'2025–2026 · Praktikant inom data science',d:'2025',s:'Praktikant, data science',p:'Mitt första möte med hockeydata. Jag tränade en expected goals-modell på 1,5 miljoner skott, och den slog dataleverantörens egen.'},
-   liu:{t:'Linköpings universitet',y:'2025–2027 · Master i AI & ML',d:'2025',s:'Master i AI & ML',p:'Jag ville gå djupare, så jag flyttade till Linköping för en master i AI och maskininlärning.'},
-   idainfront:{t:'Ida Infront',y:'Sommaren 2026 · Praktikant inom AI-utveckling',d:'Sommaren 2026',s:'Praktikant, AI-utveckling',p:'En sommar där jag lärde AI-agenter att läsa affärsdokument och lämna tillbaka konfigurationer man faktiskt kan lita på.'},
-   rogle:{t:'Rögle BK',y:'2026–nu · Mjukvaruutvecklare',d:'2026',s:'Mjukvaruutvecklare',p:'Tillbaka i hockeyn, den här gången för att bygga Rögles dataplattform från grunden. Det är här historien är nu.'},
+   nowaste:{t:'Nowaste Logistics',y:'2016–2021 · Helsingborg',d:'2016',s:'Lager',p:'Fem år på ett lagergolv lärde mig hur saker faktiskt rör sig. Någonstans mellan pallarna började jag fundera på hur det kunde göras smartare.',x:[{l:'Vad jag gjorde',p:'Jag började med orderplock. Senare delade jag ansvaret för godsmottagningen på Trademax lager och såg till att det som kom in stämde innan det gick vidare.'},{l:'Vad det lärde mig',p:'Drift handlar om flöde och pålitlighet. När ett steg stannar väntar allt bakom. Att se det på nära håll fick mig att vilja bygga systemen, inte bara arbeta i dem.'}]},
+   halmstad:{t:'Högskolan i Halmstad',y:'2022–2025 · Kandidat i data science',d:'2022',s:'Kandidat i data science',p:'Jag gick tillbaka till skolan för att lära mig hur. Mitt examensarbete undersökte om en modell kunde upptäcka sällsynta sjukdomar som är lätta att missa.',x:[{l:'Examensarbetet',p:'Jag förutsade sällsynta sjukdomar utifrån patientjournaler i MIMIC-III. Med en specialiserad förlustfunktion, Asymmetric Loss, steg F1 för de sällsynta diagnoserna från 0,136 till 0,220.',k:['MIMIC-III','Asymmetric Loss','Multi-label']},{l:'På vägen',p:'Under studierna fick jag stipendier från Getinge Sterilization och Sparbanksstiftelsen Kronan, vilket betydde mycket när jag hade lämnat ett fast jobb för att plugga.'}]},
+   farjestad:{t:'Färjestad BK',y:'2025–2026 · Praktikant inom data science',d:'2025',s:'Praktikant, data science',p:'Mitt första möte med hockeydata. Jag tränade en expected goals-modell på 1,5 miljoner skott, och den slog dataleverantörens egen.',x:[{l:'Modellen',p:'Jag byggde en expected goals-modell på 1,5 miljoner skott, med features för skottplats, skottyp, spelläge och spelet före skottet. Den slog leverantörens modell.',k:['xG','1,5 milj. skott','Python']},{l:'Att göra rätt',p:'Jag testade featuregrupper en i taget för att se vad som verkligen hjälpte, och tog bort flaggor som i smyg avslöjade utfallet. En modell som fuskar ser bara bra ut.'},{l:'Utanför isen',p:'Utanför isen satte jag upp en Azure-pipeline som varje timme matade biljettförsäljningen in i Power BI.',k:['Azure','Power BI']}]},
+   liu:{t:'Linköpings universitet',y:'2025–2027 · Master i AI & ML',d:'2025',s:'Master i AI & ML',p:'Jag ville gå djupare, så jag flyttade till Linköping för en master i AI och maskininlärning.',x:[{l:'Inriktning',p:'Mina kurser kretsar kring djupinlärning, NLP, AI-robotik, big data och distribuerade system.',k:['Djupinlärning','NLP','Robotik','Distribuerade system']},{l:'Sidospår',p:'På vägen finjusterade jag CLIP för satellitbilder och byggde en KBT-chattbot som hämtar från pålitligt material.',go:1}]},
+   idainfront:{t:'Ida Infront',y:'Sommaren 2026 · Praktikant inom AI-utveckling',d:'Sommaren 2026',s:'Praktikant, AI-utveckling',p:'En sommar där jag lärde AI-agenter att läsa affärsdokument och lämna tillbaka konfigurationer man faktiskt kan lita på.',x:[{l:'Systemet',p:'I ett team på två byggde jag ett multiagentsystem i LangGraph, integrerat i produkten. Användare laddar upp affärsdokument, chattar och får tillbaka ett verifierat konfigurationspaket.',k:['LangGraph','Multiagent','LLM']},{l:'Knepet',p:'Agenterna skriver aldrig XML. De skriver en validerad specifikation, och regelbaserade mallar gör om den till XML. Språkmodellen tänker, mallarna garanterar formatet.'}]},
+   rogle:{t:'Rögle BK',y:'2026–nu · Mjukvaruutvecklare',d:'2026',s:'Mjukvaruutvecklare',p:'Tillbaka i hockeyn, den här gången för att bygga Rögles dataplattform från grunden. Det är här historien är nu.',x:[{l:'Plattformen',p:'Jag bygger den i Python med FastAPI, Postgres och DuckDB. Den rymmer trackingdata från matcher i SHL och HockeyAllsvenskan, och spelarnas karriärer.',k:['Python','FastAPI','Postgres','DuckDB']},{l:'Byggd för att hålla',p:'En nattlig pipeline sparar varje rått API-svar och bygger om databasen från det arkivet. Spelare kopplas ihop mellan två dataleverantörer, så en person blir en post.'}]},
    clip:{t:'CLIP för satellitbilder',y:'Kursprojekt · LiU',d:'Projekt',p:'Jag finjusterade CLIP för att känna igen vad satellitbilder visar. Det hamnade först på kursens topplista för zero-shot-klassificering.'},
    cbt:{t:'KBT-chattbot med RAG',y:'Kursprojekt · LiU',d:'Projekt',p:'En chattbot för kognitiv beteendeterapi som hämtar från pålitligt material. Jag utvärderade den med en LLM-domare och jämförde det mot mänskliga bedömningar.'}
   }}
@@ -80,11 +80,26 @@ const flowV=$('#flowView'),flow=$('#flow'),dots=$('#dots');
 const RM=()=>matchMedia('(prefers-reduced-motion: reduce)').matches;
 let secs=[],cur=0,flowB=null,lock=false;
 function buildFlow(b,force){if(flowB===b&&!force)return;flowB=b;const ids=B[b].ids;
- flow.innerHTML=ids.map((id,i)=>{const c=C[id];return`<section class="ch" data-i="${i}"><div class="im"><img alt="${c.t}" data-img-id="${c.img||id}"></div><div class="tx"><div class="d">${c.d}</div><h2>${c.t}</h2><div class="sub">${c.y}</div><p class="story">${c.p}</p></div></section>`}).join('')+
+ flow.innerHTML=ids.map((id,i)=>{const c=C[id];const x=c.x||[],n=x.length+1;const p0=`<div class="tx"><div class="d">${c.d}</div><h2>${c.t}</h2><div class="sub">${c.y}</div><p class="story">${c.p}</p></div>`;
+ if(!x.length)return`<section class="ch" data-i="${i}"><div class="im"><img alt="${c.t}" data-img-id="${c.img||id}"></div>${p0}</section>`;
+ return`<section class="ch hp" data-i="${i}" data-n="${n}" data-p="0"><div class="im"><img alt="${c.t}" data-img-id="${c.img||id}"></div><div class="vp"><div class="trk"><div class="pn">${p0}</div>${x.map((q,j)=>`<div class="pn" aria-hidden="true"><div class="tx"><div class="pl">${q.l}</div><p class="story">${q.p}</p>${q.k?`<div class="tags">${q.k.map(t=>`<span>${t}</span>`).join('')}</div>`:''}${q.go?`<button class="seep" data-go="#b/projects" tabindex="-1">${T().seeProj}</button>`:''}</div></div>`).join('')}</div>
+ <button class="chev l" data-pm="-1" aria-label="${T().prevP}" tabindex="-1"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 6-6 6 6 6"/></svg></button><button class="chev r" data-pm="1" aria-label="${T().nextP}"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></button></div>
+ <div class="pd">${Array.from({length:n},(_,k)=>`<i data-pk="${k}"${k?'':' class="on"'}></i>`).join('')}${i===0&&b==='story'?`<button class="more" data-pm="1">${T().more} →</button>`:''}</div></section>`}).join('')+
  `<section class="ch end" data-i="${ids.length}"><div class="tx"><p class="story close">${b==='story'?T().endStory:T().endProjects /* was 'More on GitHub.' - re-enable later */}</p><p class="story seek">${T().seek}</p><div class="foot">${contactRow('icons')}<button class="all" data-go="#/">${T().backStart}</button></div></div></section>`;
  secs=[...flow.children];dots.innerHTML=secs.map((_,k)=>`<i data-k="${k}"></i>`).join('');syncImages();
  const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)setCur(+e.target.dataset.i)}),{root:flow,threshold:.6});secs.forEach(s=>io.observe(s))}
-function setCur(i){cur=i;secs.forEach((s,k)=>s.classList.toggle('on',k===i));[...dots.children].forEach((d,k)=>d.classList.toggle('on',k===i));
+function setP(sec,p){if(!sec||!sec.classList.contains('hp'))return false;const n=+sec.dataset.n;p=Math.max(0,Math.min(n-1,p));if(p===+sec.dataset.p)return false;sec.dataset.p=p;
+ sec.classList.toggle('deep',p>0);sec.querySelector('.trk').style.transform=`translateX(${-p*100}%)`;
+ sec.querySelectorAll('.pn').forEach((e,k)=>{e.setAttribute('aria-hidden',k!==p);e.querySelectorAll('button').forEach(b=>b.tabIndex=k===p?0:-1)});
+ sec.querySelectorAll('.pd i').forEach((e,k)=>e.classList.toggle('on',k===p));sec.querySelector('.chev.l').tabIndex=p?0:-1;sec.querySelector('.chev.r').tabIndex=p<n-1?0:-1;
+ sec.classList.add('seen');return true}
+const P=d=>setP(secs[cur],(+(secs[cur]&&secs[cur].dataset.p)||0)+d);
+flow.addEventListener('click',e=>{const b=e.target.closest('[data-pm],[data-pk]');if(!b)return;const sec=b.closest('.ch');if(+sec.dataset.i!==cur){scrollTo_(+sec.dataset.i);return}
+ b.dataset.pk!=null?setP(sec,+b.dataset.pk):P(+b.dataset.pm)});
+let hw=0;flow.addEventListener('wheel',e=>{if(Math.abs(e.deltaX)>Math.abs(e.deltaY)*1.2&&Math.abs(e.deltaX)>8){e.preventDefault();const n=Date.now();if(n-hw>650){hw=n;P(e.deltaX>0?1:-1)}}},{passive:false});
+let tx0=0,ty0=0;flow.addEventListener('touchstart',e=>{tx0=e.touches[0].clientX;ty0=e.touches[0].clientY},{passive:true});
+flow.addEventListener('touchend',e=>{const dx=e.changedTouches[0].clientX-tx0,dy=e.changedTouches[0].clientY-ty0;if(Math.abs(dx)>45&&Math.abs(dx)>Math.abs(dy)*1.5)P(dx<0?1:-1)},{passive:true});
+function setCur(i){if(i!==cur)secs.forEach((s,k)=>{if(k!==i)setP(s,0)});cur=i;secs.forEach((s,k)=>s.classList.toggle('on',k===i));[...dots.children].forEach((d,k)=>d.classList.toggle('on',k===i));
  const h=hashOf(flowB,i);if(location.hash!==h)history.replaceState(null,'',h);setCrumb(state())}
 function scrollTo_(i,inst){i=Math.max(0,Math.min(secs.length-1,i));secs[i].scrollIntoView({behavior:inst||RM()?'instant':'smooth',block:'center'})}
 dots.onclick=e=>{const d=e.target.closest('i');if(d)scrollTo_(+d.dataset.k)};
@@ -96,11 +111,12 @@ flow.addEventListener('touchend',e=>{if(flow.scrollTop<=secs[0].offsetTop-flow.c
 function state(){const m=location.hash.match(/^#b\/(\w+)(?:\/(\w+))?/);if(!m||!B[m[1]])return{v:'land'};const b=m[1],ids=B[b].ids;
  if(!m[2])return{v:'flow',b,i:0};if(m[2]==='end')return{v:'flow',b,i:ids.length};const i=ids.indexOf(m[2]);return{v:'flow',b,i:Math.max(0,i)}}
 const hashOf=(b,i)=>i==null?`#b/${b}`:i>=B[b].ids.length?`#b/${b}/end`:`#b/${b}/${B[b].ids[i]}`;
-function up(){if(!tlEl.hidden){setTL(false);return}if(state().v==='flow')go('#/')}
+function up(){if(!tlEl.hidden){setTL(false);return}if(state().v==='flow'&&setP(secs[cur],0))return;if(state().v==='flow')go('#/')}
 document.addEventListener('keydown',e=>{const s=state();if(e.key==='Escape'){up();return}
  if(s.v!=='flow'||!tlEl.hidden)return;
- if(['ArrowDown','PageDown','ArrowRight'].includes(e.key)){e.preventDefault();scrollTo_(cur+1)}
- else if(['ArrowUp','PageUp','ArrowLeft'].includes(e.key)){e.preventDefault();cur===0?go('#/'):scrollTo_(cur-1)}});
+ if(e.key==='ArrowRight'){e.preventDefault();P(1)}else if(e.key==='ArrowLeft'){e.preventDefault();P(-1)}
+ else if(['ArrowDown','PageDown'].includes(e.key)){e.preventDefault();scrollTo_(cur+1)}
+ else if(['ArrowUp','PageUp'].includes(e.key)){e.preventDefault();cur===0?go('#/'):scrollTo_(cur-1)}});
 upBtn.onclick=up;
 document.addEventListener('click',e=>{const b=e.target.closest('[data-go]');if(!b)return;e.preventDefault();const g=b.dataset.go;if(b.dataset.tl!=null){setTL(false);history.replaceState(null,'',g);requestAnimationFrame(()=>scrollTo_(+b.dataset.tl,true));return}go(g)});
 // Timeline overview (story only)
@@ -134,7 +150,7 @@ function applyStatic(){const t=T();document.documentElement.lang=LANG;langBtn.te
  segS.setAttribute('aria-label',t.scrollView);segS.title=t.scrollView;segT.setAttribute('aria-label',t.timeline);segT.title=t.timeline;
  flow.setAttribute('aria-label',t.chapters);tlEl.setAttribute('aria-label',t.timeline);document.querySelector('meta[name=description]').content=t.desc;themeIcon()}
 function setLang(l){LANG=l;try{localStorage.setItem('lang',l)}catch(e){}applyStatic();const s=state();
- if(s.v==='flow'){const keep=cur,tlOn=!tlEl.hidden,top=flow.scrollTop;buildFlow(s.b,true);flow.scrollTop=top;setCur(keep);if(tlOn)setTL(true)}else render()}
+ if(s.v==='flow'){const keep=cur,tlOn=!tlEl.hidden,top=flow.scrollTop,kp=+(secs[cur]&&secs[cur].dataset.p)||0;buildFlow(s.b,true);flow.scrollTop=top;setCur(keep);setP(secs[keep],kp);if(tlOn)setTL(true)}else render()}
 langBtn.onclick=()=>setLang(LANG==='sv'?'en':'sv');
 applyStatic();
 render();
