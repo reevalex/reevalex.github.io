@@ -1,7 +1,7 @@
 // All user-facing copy lives here. EN + SV.
 const STRINGS={
  en:{
-  greet:'Hi, I’m Alexander.',
+  greet:'Hi, I’m Alexander Reevcrona.',
   intro:'AI & ML Engineer · MSc in Computer Science at Linköping\u00a0University.',
   looking:'Looking for a master’s thesis and roles in AI/ML for 2027.',
   cardStory:'My story',cardProjects:'Projects',
@@ -24,7 +24,7 @@ const STRINGS={
    cbt:{t:'CBT chatbot with RAG',y:'Course project · LiU',d:'Project',p:'A chatbot for cognitive behavioural therapy that retrieves from trusted material. I evaluated it with an LLM judge and checked that against human ratings.'}
   }},
  sv:{
-  greet:'Hej, jag heter Alexander.',
+  greet:'Hej, jag heter Alexander Reevcrona.',
   intro:'AI- & ML-ingenjör · Masterstudent i datavetenskap vid Linköpings\u00a0universitet.',
   looking:'Söker exjobb och roller inom AI/ML till 2027.',
   cardStory:'Min historia',cardProjects:'Projekt',
@@ -56,13 +56,13 @@ const B={
  story:{get t(){return T().bStory},ids:['nowaste','halmstad','farjestad','liu','idainfront','rogle']},
  projects:{get t(){return T().bProjects},ids:['clip','cbt']}
 };
-const NIGHT=new Set(['nowaste','halmstad','farjestad','liu','idainfront','rogle','me']);
+const NIGHT=new Set(['nowaste','halmstad','farjestad','liu','idainfront','rogle','me','door']);
 const $=s=>document.querySelector(s);
 const home=$('#home'),tl=$('#timeline'),strip=$('#strip'),scrub=$('#scrub'),heroImg=$('#heroImg'),hero=$('#hero'),themeBtn=$('#themeBtn'),crumb=$('#crumb'),upBtn=$('#upBtn');
 const isDark=()=>document.documentElement.classList.contains('dark');
 function setImgEl(el,id){const n=isDark()&&NIGHT.has(id);const src=`assets/${id}${n?'-night':''}.png`;if(el.getAttribute('src')!==src)el.src=src;el.classList.toggle('night',n);el.dataset.imgId=id}
 function syncImages(){document.querySelectorAll('img[data-img-id]').forEach(el=>setImgEl(el,el.dataset.imgId))}
-Object.keys(C).map(id=>C[id].img||id).concat('me').forEach(id=>{new Image().src=`assets/${id}.png`;if(NIGHT.has(id))new Image().src=`assets/${id}-night.png`});
+Object.keys(C).map(id=>C[id].img||id).concat('me','door').forEach(id=>{new Image().src=`assets/${id}.png`;if(NIGHT.has(id))new Image().src=`assets/${id}-night.png`});
 
 const I={
  mail:'<path d="M3 6h18v12H3z"/><path d="m3 7 9 6 9-6"/>',
@@ -85,7 +85,7 @@ function buildFlow(b,force){if(flowB===b&&!force)return;flowB=b;const ids=B[b].i
  return`<section class="ch hp" data-i="${i}" data-n="${n}" data-p="0"><div class="im"><img alt="${c.t}" data-img-id="${c.img||id}"></div><div class="vp"><div class="trk"><div class="pn">${p0}</div>${x.map((q,j)=>`<div class="pn" aria-hidden="true"><div class="tx"><div class="pl">${q.l}</div><p class="story">${q.p}</p>${q.k?`<div class="tags">${q.k.map(t=>`<span>${t}</span>`).join('')}</div>`:''}${q.go?`<button class="seep" data-go="#b/projects" tabindex="-1">${T().seeProj}</button>`:''}</div></div>`).join('')}</div>
  <button class="chev l" data-pm="-1" aria-label="${T().prevP}" tabindex="-1"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 6-6 6 6 6"/></svg></button><button class="chev r" data-pm="1" aria-label="${T().nextP}"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></button></div>
  <div class="pd">${Array.from({length:n},(_,k)=>`<i data-pk="${k}"${k?'':' class="on"'}></i>`).join('')}${i===0&&b==='story'?`<button class="more" data-pm="1">${T().more} →</button>`:''}</div></section>`}).join('')+
- `<section class="ch end" data-i="${ids.length}"><div class="tx"><p class="story close">${b==='story'?T().endStory:T().endProjects /* was 'More on GitHub.' - re-enable later */}</p><p class="story seek">${T().seek}</p><div class="foot">${contactRow('icons')}<button class="all" data-go="#/">${T().backStart}</button></div></div></section>`;
+ `<section class="ch end" data-i="${ids.length}"><div class="im"><img alt="" data-img-id="door"></div><div class="tx"><p class="story close">${b==='story'?T().endStory:T().endProjects /* was 'More on GitHub.' - re-enable later */}</p><p class="story seek">${T().seek}</p><div class="foot">${contactRow('icons')}<button class="all" data-go="#/">${T().backStart}</button></div></div></section>`;
  secs=[...flow.children];dots.innerHTML=secs.map((_,k)=>`<i data-k="${k}"></i>`).join('');syncImages();
  const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)setCur(+e.target.dataset.i)}),{root:flow,threshold:.6});secs.forEach(s=>io.observe(s))}
 function setP(sec,p){if(!sec||!sec.classList.contains('hp'))return false;const n=+sec.dataset.n;p=Math.max(0,Math.min(n-1,p));if(p===+sec.dataset.p)return false;sec.dataset.p=p;
@@ -127,7 +127,7 @@ segT.onclick=()=>setTL(true);segS.onclick=()=>{if(!tlEl.hidden){setTL(false);req
 function go(h){if(location.hash===h){render();return}history.pushState(null,'',h);route()}
 function setCrumb(s){if(s.v==='land'){crumb.innerHTML='';upBtn.hidden=true;return}upBtn.hidden=false;const ids=B[s.b].ids;
  const last=s.i>=ids.length?T().contact:C[ids[s.i]].t;
- crumb.innerHTML=`<a href="#/" data-go="#/">Alexander</a><span class="sep">/</span><a href="#b/${s.b}" data-go="${hashOf(s.b,0)}">${B[s.b].t}</a><span class="sep">/</span><span class="here">${last}</span>`;
+ crumb.innerHTML=`<a class="root" href="#/" data-go="#/">Alexander Reevcrona</a><span class="sep">/</span><a href="#b/${s.b}" data-go="${hashOf(s.b,0)}">${B[s.b].t}</a><span class="sep">/</span><span class="here">${last}</span>`;
  document.title=`${last} · Alexander Reevcrona`}
 function render(){const s=state();setCrumb(s);
  if(s.v==='flow'){home.hidden=true;flowV.hidden=false;flowV.classList.remove('enter');void flowV.offsetWidth;flowV.classList.add('enter');const ob=flowB;seg.hidden=s.b!=='story';if(ob!==s.b)setTL(false);buildFlow(s.b);
@@ -142,8 +142,8 @@ function route(){if(document.startViewTransition&&!RM())document.startViewTransi
 addEventListener('popstate',route);
 const SUN='<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>',MOON='<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z"/></svg>';
 function themeIcon(){const d=isDark();themeBtn.innerHTML=d?SUN:MOON;themeBtn.setAttribute('aria-label',d?T().toLight:T().toDark);themeBtn.title=d?T().lightT:T().darkT}
-function setTheme(d){document.documentElement.classList.toggle('dark',d);themeIcon();try{localStorage.setItem('theme',d?'dark':'light')}catch(e){}syncImages()}
-themeBtn.onclick=()=>{const d=!isDark();document.startViewTransition?document.startViewTransition(()=>setTheme(d)):setTheme(d)};
+function setTheme(d){document.documentElement.classList.add('theme-switching');document.documentElement.classList.toggle('dark',d);themeIcon();try{localStorage.setItem('theme',d?'dark':'light')}catch(e){}syncImages();requestAnimationFrame(()=>{requestAnimationFrame(()=>document.documentElement.classList.remove('theme-switching'))})}
+themeBtn.onclick=()=>setTheme(!isDark());
 const langBtn=$('#langBtn');
 function applyStatic(){const t=T();document.documentElement.lang=LANG;langBtn.textContent=t.langBtn;langBtn.setAttribute('aria-label',t.langLabel);langBtn.title=t.langLabel;langBtn.setAttribute('lang',LANG==='sv'?'en':'sv');
  upBtn.setAttribute('aria-label',t.back);upBtn.title=t.back;crumb.setAttribute('aria-label',t.breadcrumb);seg.setAttribute('aria-label',t.storyView);
